@@ -21,6 +21,9 @@
 
 // HTTP Status Code
 
+// Importando o módulo http nativo do Node.js
+const http = require('http');
+
 const users = []
 
 const server = http.createServer((req, res) => {
