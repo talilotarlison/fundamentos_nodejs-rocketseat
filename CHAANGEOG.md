@@ -161,3 +161,21 @@ Aqui, as primeiras linhas são o cabeçalho, dando informações sobre a requisi
 - O conteúdo (dados) está sempre no corpo da requisição para métodos como POST e PUT.
 
 Portanto, os dados do POST **não são enviados no header do pacote**, mas sim no corpo da mensagem HTTP.
+
+
+O "GET" não faz parte do cabeçalho (header) do pacote HTTP. Na estrutura de uma requisição HTTP, a primeira linha é chamada de "request-line" e contém o método HTTP (como GET, POST), o caminho do recurso (URL) e a versão do protocolo HTTP. Essa linha faz parte do cabeçalho HTTP, mas o método em si não é um campo de cabeçalho com chave/valor, e sim uma parte da linha inicial que indica o tipo de ação que o cliente deseja realizar.
+
+Depois dessa linha inicial, vêm as linhas com os cabeçalhos propriamente ditos, que são pares chave:valor, como por exemplo "Host", "User-Agent", etc. Cada cabeçalho passa informações adicionais sobre a requisição ao servidor.
+
+Portanto, o "GET" é o método HTTP usado e aparece na linha inicial da requisição, mas não é um campo do cabeçalho. O cabeçalho começa nas linhas seguintes com os pares nome: valor, onde estão as outras informações da requisição.
+
+Isso pode ser exemplificado assim:
+
+```
+GET /pagina?nome=joao&id=123 HTTP/1.1   <--- linha inicial (request-line) contendo o método GET
+Host: www.exemplo.com                   <--- cabeçalho
+User-Agent: Mozilla/5.0                 <--- cabeçalho
+...
+```
+
+Ou seja, o GET não é uma chave/valor do cabeçalho, mas a definição do método HTTP da requisição, presente na request-line do pacote HTTP.
